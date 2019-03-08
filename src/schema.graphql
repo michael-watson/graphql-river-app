@@ -1,0 +1,77 @@
+scalar DateTime
+
+type Query {
+    myFavoriteSites(email: String! period: String): [Site]
+    sites(stateCode: String siteType: String status:SiteStatus siteCode: String period: String) : [Site]
+}
+
+type Mutation {
+    favoriteSite(email: String! siteCode: String! isFavorite:Boolean!): FavoriteMutationResponse
+}
+
+type FavoriteMutationResponse {
+    email: String
+    siteCode: String
+    isFavorite: Boolean
+    createdAt: Float
+}
+
+type Site {
+    """
+    Name of site where the sensor is located
+    """
+    name: String
+    """
+    Unique identifier for the sensor
+    """
+    id: ID!
+    """
+    Latitude GPS coordinates for the site/sensor
+    """
+    latitude: Float
+    """
+    Longitude GPS coordinates for the site/sensor
+    """
+    longitude: Float
+    """
+    Measurement readings from sensors
+    """
+    sensors: [Sensor]
+    isFavorite: Boolean!
+}
+
+type Sensor {
+    """
+    Unique identifier for the sensor
+    """
+    id: ID!
+    """
+    The unit you would typically see right after the reading
+    """
+    unit: String
+    """
+    Describes the unit and what it means
+    """
+    unitDescription: String
+    """
+    These are the various sensor readings over the given timeframe
+    """
+    measurements: [Measurement]
+}
+
+type Measurement {
+    """
+    Measurement reading from the sensor
+    """
+    measuredValue: String
+    """
+    Date and time the measurement was taken on the sensor
+    """
+    dateMeasured: String
+}
+
+enum SiteStatus {
+    ALL
+    ACTIVE
+    INACTIVE
+}
