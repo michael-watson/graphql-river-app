@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const resolvers = require('./resolvers/');
 const FavoriteSites = require('./datasources/favoriteSites');
 const UsgsRestSource = require('./datasources/usgsRestSource');
