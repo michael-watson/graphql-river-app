@@ -1,6 +1,12 @@
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').load();
+}
+
 const resolvers = require('./resolvers/');
+
 const FavoriteSites = require('./datasources/favoriteSites');
 const UsgsRestSource = require('./datasources/usgsRestSource');
+
 const { ApolloServer } = require('apollo-server');
 
 const fs = require('fs');

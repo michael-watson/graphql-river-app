@@ -36,4 +36,7 @@ module.exports = class FavoriteSites extends RESTDataSource {
     async getFavoriteSiteById(id){
         return await this.get(`favoriteSites/${id}`);
     }
+    async throwThatNotFoundError() {
+        return await this.get(`throwThatError/`);
+    }
 };

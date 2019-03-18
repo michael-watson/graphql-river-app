@@ -1,3 +1,3 @@
 module.exports = {
-    service: 'lost-coast',
-  };
+  service: 'lost-coast',
+};

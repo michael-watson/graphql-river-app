@@ -3,6 +3,8 @@ scalar DateTime
 type Query {
     myFavoriteSites(email: String! period: String): [Site]
     sites(stateCode: String siteType: String status:SiteStatus siteCode: String period: String) : [Site]
+    whyThisHere: Site
+    notFoundEndpoint: Site
 }
 
 type Mutation {
@@ -20,7 +22,11 @@ type Site {
     """
     Name of site where the sensor is located
     """
-    name: String
+    name: String @deprecated(reason: "Use `description` field instead. The name is misleading because it really describes the location more.")
+    """
+    Description of site where the sensor is located.
+    """
+    description: String
     """
     Unique identifier for the sensor
     """
