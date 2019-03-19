@@ -16,6 +16,13 @@ module.exports = {
 
             return starredSites;
         },
+        whyThisHere: a=> {
+            throw new ApolloError("Whooooooooaaa","418");
+        },
+        notFoundEndpoint:async (root, { }, { dataSources }) => {
+            let userStarredSites = await dataSources.favoriteSites.getWrongSite();
+            return userStarredSites;
+        },
 		sites: async (root, {stateCode, siteCode, siteType, status, period}, context) => {
             if(siteCode)
                 return await context.dataSources.usgsSystem.getSiteBySiteCode(siteCode, period);
