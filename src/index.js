@@ -15,7 +15,12 @@ const server = new ApolloServer({
 	dataSources: () => ({
 		favoriteSites: new FavoriteSites(),
 		usgsSystem: new UsgsRestSource()
-	})
+	}),
+	plugins: [
+		require('apollo-server-plugin-operation-registry')({
+			forbidUnregisteredOperations: true
+		}),
+	],
 });
 
 server.listen().then(({ url }) => {
