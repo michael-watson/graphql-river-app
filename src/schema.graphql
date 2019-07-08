@@ -3,8 +3,8 @@ scalar DateTime
 type Query {
     myFavoriteSites(email: String! period: String): [Site]
     sites(stateCode: String siteType: String status:SiteStatus siteCode: String period: String) : [Site]
-    # whyThisHere: Site
-    # notFoundEndpoint: Site
+    whyThisHere: Site
+    notFoundEndpoint: Site
 }
 
 type Mutation {
