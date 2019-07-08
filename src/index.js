@@ -18,20 +18,7 @@ const server = new ApolloServer({
 	}),
 	plugins: [
 		require('apollo-server-plugin-operation-registry')({
-			forbidUnregisteredOperations({
-				context, // Destructure the shared request `context`.
-				request
-			  }) {
-				// If a magic header is in place, allow any unregistered operation.
-				if (request.http.headers.get('Let-me-pass') === 'Pretty please?') {
-				  return false;
-				}
-
-				
-		
-				// Enforce operation safe-listing on all other users.
-				return false;
-			  }
+			forbidUnregisteredOperations: true
 		}),
 	],
 });
